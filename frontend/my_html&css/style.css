@@ -1,0 +1,97 @@
+body, ul, li {
+  margin: 0; padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-bar-section {
+  border: 1px solid red;
+}
+
+.top-bar-section > .invoice {
+  border: 1px solid orange;
+  
+}
+
+/* Title */
+.top-bar-section > .invoice > .container {
+  border: 1px solid green;
+}
+
+.top-bar-section > .invoice > .container > .usermenu-box {
+  border: 1px solid blue;
+  width: 100%;
+  display: flex; 
+}
+
+.top-bar-section > .invoice > .container > .usermenu-box > h1 {
+  border: 1px solid purple;
+  margin-left: auto; margin-right: auto;
+  font-weight: 500; font-size: 70px;
+}  
+
+/* Login */
+.top-bar-section > .invoice > .login_container {
+  border: 1px solid red;
+  display: flex;
+}
+
+.top-bar-section > .invoice > .login_container > .container {
+  border: 1px solid orange;
+  margin-left: auto; margin-right: auto;
+  padding-left: 800px;
+}
+
+.top-bar-section > .invoice > .login_container > .container 
+> .login_button {
+  border: 1px solid yellow;
+  margin-left: auto;
+}
+
+/* description */
+.top-bar-section > .invoice > .dec_container {
+  border: 1px solid red;
+  display: flex;
+}  
+
+.top-bar-section > .invoice > .dec_container > p {
+  border: 1px solid orange;
+  margin-left: auto; margin-right: auto;
+  margin-top: 10px; font-size: 20px;
+}  
+
+.top-bar-section > .invoice > .dec_container > p > a{
+  border: 1px solid yellow;
+  font-size: 20px;
+}  
+
+/* create/validate/rendering */
+.top-bar-section > .invoice > .boxes {
+  border: 1px solid red;
+  
+}  
+
+.top-bar-section > .invoice > .boxes > ul {
+  border: 1px solid orange;
+  display: flex;
+}  
+
+.top-bar-section > .invoice > .boxes > ul > li {
+  border: 1px solid yellow;
+  margin-left: auto; margin-right: auto;
+}  
+
+.top-bar-section > .invoice > .boxes > ul > li > a {
+  border: 1px solid green;
+  width: 100%;
+  background-color: green;
+  font-size: 20px; font-weight: 700;
+}  

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="En">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="module" src="main.js"></script>
   <!-- Login -->
   <title>Login</title>
     <style>
@@ -57,24 +56,18 @@
       </div>
 
       <!-- login -->
-      <div class="login_container">
-        <div class="container">
-          <h2>Login</h2>
-          <form action="/login" method="post">
-            <!-- Username -->
-            <div>
-              <label for="username">Username:</label>
-              <input type="text" id="username" name="username" required>
-            </div>
-            <!-- Password -->
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <div class="login_button">
-              <input type="submit" value="Login">
-            </div> 
-          </form>
-        </div>
-      </div>     
+      <div class="login-section">
+        <form id="loginForm" class="login wrap">
+          <div class="h1">Login test</div>
+          <div class="user">
+            <input placeholder="Email" id="email" name="email" type="text">
+          </div>
+          <div class="password">
+            <input placeholder="Password" id="password" name="password" type="password" required>
+          </div>
+          <input value="Login" class="btn" type="submit">
+        </form>
+      </div>
 
       <!-- Description -->
       <div class="dec_container">     
@@ -87,11 +80,12 @@
       <div class="boxes">
         <ul>
           <li><a href="file:///C:/Users/chanh/OneDrive/Documents/SENG2021/Sprint%203/creation.html">creation</a></li>
-          <li><a href="file:///C:/Users/chanh/OneDrive/Documents/SENG2021/Sprint%203/validation.html">validation</a></li>
+          <li><a href="http://127.0.0.1:5500/404-invoice/frontend/my_html&css/validation.html">validation</a></li>
           <li><a href="#">rendering</a></li>
         </ul> 
       </div>
     </div>
   </div>
+  <script type="module" src="main.js"></script>
 </body>
 </html>

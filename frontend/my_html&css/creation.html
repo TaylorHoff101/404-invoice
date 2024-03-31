@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creation</title>
+    <link rel="stylesheet" href="creation_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Convert to CSV file</title>
+</head>
+<body>
+  <div class="top-bar-section">
+    <div class="invoice">
+      <!-- Title -->
+      <div class="container">
+        <div class="usermenu-box">
+          <h1>Creation</h1>
+        </div>  
+      </div>
+
+      <!-- csv/Json -->
+      <!-- csv -->
+      <h1>Convert to CSV file</h1>
+      <form id="textToCsvForm">
+        <input type="file" id="textFileInput" accept=".txt">
+        <button type="button" onclick="convertTextToCsv()">Convert to CSV</button>
+      </form>
+      <hr>
+      <pre id="csvOutput"></pre>
+      <script>
+        function convertTextToCsv() {
+          var fileInput = document.getElementById('textFileInput');
+          var file = fileInput.files[0];
+
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+              var text = event.target.result;
+              var csv = convertTextToCsvString(text);
+              document.getElementById('csvOutput').textContent = csv;
+            };
+            reader.readAsText(file);
+          }
+        }
+
+        function convertTextToCsvString(text) {
+          // Split the text into lines
+          var lines = text.split('\n');
+
+          // Prepare CSV content
+          var csvContent = '';
+          for (var i = 0; i < lines.length; i++) {
+            // Split each line by comma and add quotes around each value
+            var values = lines[i].split(',');
+            for (var j = 0; j < values.length; j++) {
+              csvContent += '"' + values[j].trim() + '"';
+              if (j < values.length - 1) {
+                csvContent += ',';
+              }
+            }
+            // Add newline character
+            csvContent += '\n';
+          }
+          return csvContent;
+        }
+      </script>
+
+      <!-- Json -->
+      <h1>Convert to Json file</h1>
+
+      <form id="textToJsonForm">
+        <input type="file" id="textFileInput" accept=".txt">
+        <button type="button" onclick="convertTextToJson()">Convert to JSON</button>
+      </form>
+      <hr>
+      <pre id="jsonOutput"></pre>
+
+      <script>
+        function convertTextToJson() {
+          var fileInput = document.getElementById('textFileInput');
+          var file = fileInput.files[0];
+
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+              var text = event.target.result;
+              var json = convertTextToJsonString(text);
+              document.getElementById('jsonOutput').textContent = json;
+            };
+            reader.readAsText(file);
+          }
+        }
+
+        function convertTextToJsonString(text) {
+          // Split the text into lines
+          var lines = text.split('\n');
+
+          // Prepare JSON content
+          var jsonContent = '{\n';
+          for (var i = 0; i < lines.length; i++) {
+            // Split each line by comma and add quotes around each value
+            var values = lines[i].split(',');
+            jsonContent += '  "line_' + i + '": [';
+            for (var j = 0; j < values.length; j++) {
+              jsonContent += '"' + values[j].trim() + '"';
+              if (j < values.length - 1) {
+                jsonContent += ', ';
+              }
+            }
+            jsonContent += ']';
+            if (i < lines.length - 1) {
+              jsonContent += ',\n';
+            } else {
+              jsonContent += '\n';
+            }
+          }
+          jsonContent += '}';
+          return jsonContent;
+        }
+      </script>
+
+    </div>
+  </div>
+</body>
+</html>
