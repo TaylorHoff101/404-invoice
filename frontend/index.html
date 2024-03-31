@@ -5,53 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invoicing</title>
-  <link rel="stylesheet" href="styles/global.css"> 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
   <!-- Login -->
   <title>Login</title>
-    
 </head>
 <body>
-  <div class="top-bar-section">
-    <div class="invoice">
-      <!-- Title -->
-      <div class="container">
-        <div class="usermenu-box">
-          <h1>Title</h1>
-        </div>  
-      </div>
+  <div class="loader">
+    <svg viewBox="0 0 80 80">
+        <circle id="test" cx="40" cy="40" r="32"></circle>
+    </svg>
+</div>
 
-      <!-- login -->
-      <div class="login_container">
-        <div class="container">
-          <h2>Login</h2>
-          <form action="/login" method="post">
-            <!-- Username -->
-            <div>
-              <label for="username">Username:</label>
-              <input type="text" id="username" name="username" required>
-            </div>
-            <!-- Password -->
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <div class="login_button">
-              <input type="submit" value="Login">
-            </div> 
-          </form>
-        </div>
-      </div>     
+<div class="loader triangle">
+    <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+    </svg>
+</div>
 
-      <!-- Description -->
-      <div class="dec_container">     
-        <p class="description">
-          <a href="#">Description goes here</a>
-        </p>
-      </div> 
-
-      
-    </div>
-  </div>
+<div class="loader">
+    <svg viewBox="0 0 80 80">
+        <rect x="8" y="8" width="64" height="64"></rect>
+    </svg>
+</div>
 </body>
 </html>
