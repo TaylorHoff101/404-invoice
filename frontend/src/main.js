@@ -1,20 +1,18 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        console.log(email, password);
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    console.log(username, password);
-    document.getElementById('loginContainer').addEventListener('submit', async (a) => {
-        a.preventDefault();
-
-        fetch('https://invoice-validation-deployment.onrender.com/auth/login', {
+        fetch('https://invoice-validation-deployment.onrender.com/auth/register', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                username: username,
+                username: email,
                 password: password
             })
         })
@@ -28,11 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .then((data) => {
-            console.log(data)
+            console.log(data);
         })
         .catch((error) => {
             console.error('Error during login:', error);
+        });
     });
-    })
-
 });
