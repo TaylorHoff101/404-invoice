@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+    <link rel="stylesheet" href="validate_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <div class="top-bar-section">
+    <div class="invoice">
+      <!-- Title -->
+      <div class="container">
+        <div class="usermenu-box">
+          <h1>Validation</h1>
+        </div>  
+      </div>
+
+      <!-- Description -->
+      <div class="dec_container">    
+        <p class="description">Description goes here</p>
+      </div> 
+
+      <!-- xml/upload -->
+      <div class="upload">
+        <ul>
+          <li>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileUpload" id="fileUpload">
+                <button type="submit">Upload File</button>
+            </form>            
+          </li>
+        </ul> 
+      </div>
+
+      <!-- validate -->
+      <div class="validation">
+        <ul>
+            <li>
+                <form action="/validate" method="post" enctype="multipart/form-data">
+                    <input type="file" name="fileUpload" id="fileUpload">
+                    <button type="submit">Validate</button>
+                </form>
+            </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

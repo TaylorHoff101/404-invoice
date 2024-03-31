@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoicing</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Login -->
+  <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container input[type="submit"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+  <div class="top-bar-section">
+    <div class="invoice">
+      <!-- Title -->
+      <div class="container">
+        <div class="usermenu-box">
+          <h1>Title</h1>
+        </div>  
+      </div>
+
+      <!-- login -->
+      <div class="login_container">
+        <div class="container">
+          <h2>Login</h2>
+          <form action="/login" method="post">
+            <!-- Username -->
+            <div>
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" required>
+            </div>
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="login_button">
+              <input type="submit" value="Login">
+            </div> 
+          </form>
+        </div>
+      </div>     
+
+      <!-- Description -->
+      <div class="dec_container">     
+        <p class="description">
+          <a href="#">Description goes here</a>
+        </p>
+      </div> 
+
+      <!-- create/validate/rendering -->
+      <div class="boxes">
+        <ul>
+          <li><a href="file:///C:/Users/chanh/OneDrive/Documents/SENG2021/Sprint%203/creation.html">creation</a></li>
+          <li><a href="file:///C:/Users/chanh/OneDrive/Documents/SENG2021/Sprint%203/validation.html">validation</a></li>
+          <li><a href="#">rendering</a></li>
+        </ul> 
+      </div>
+    </div>
+  </div>
+</body>
+</html>
