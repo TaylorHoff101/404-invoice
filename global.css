@@ -224,7 +224,7 @@ button.button.render::after {
 }
 
 .review {
-  flex: 0 1 calc(50% - 20px); /* Two reviews per row */
+  flex: 0 1 calc(50% - 20px);
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 20px;
