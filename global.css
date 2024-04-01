@@ -29,7 +29,7 @@ header {
   color: rgb(217, 176, 255);
   text-shadow: 0 0 .5em rgb(217, 176, 255);
   user-select: none;
-  border: .25em solid var(--glow-color); /* Glowing border */
+  border: .25em solid var(--glow-color);
   padding: 0.5em;
   border-radius: 0.5em;
   text-align: center;
@@ -84,11 +84,11 @@ header {
 
 .title {
   text-align: center;
-  font-size: 70px; /* Adjust font size as needed */
+  font-size: 70px;
   z-index: 100;
   position: absolute;
-  color: rgb(217, 176, 255); /* Set the text color */
-  text-shadow: 0 0 .5em rgb(217, 176, 255); /* Apply the glow effect */
+  color: rgb(217, 176, 255);
+  text-shadow: 0 0 .5em rgb(217, 176, 255); 
   transition: all 0.3s;
   top: 30px;
   right: 730px; 
@@ -193,27 +193,78 @@ button {
  }
 
  button.button.create {
-  --glow-color: rgb(75, 156, 211); /* Blue glow color */
+  --glow-color: rgb(75, 156, 211);
 }
 
 button.button.validate {
-  --glow-color: rgb(127, 186, 68); /* Green glow color */
+  --glow-color: rgb(127, 186, 68);
 }
 
 button.button.render {
-  --glow-color: rgb(237, 85, 101); /* Red glow color */
+  --glow-color: rgb(237, 85, 101);
 }
 
 button.button.create::after {
-  background-color: rgba(75, 156, 211, 0.781); /* Blue glow spread color */
+  background-color: rgba(75, 156, 211, 0.781);
 }
 
 button.button.validate::after {
-  background-color: rgba(127, 186, 68, 0.781); /* Green glow spread color */
+  background-color: rgba(127, 186, 68, 0.781);
 }
 
 button.button.render::after {
-  background-color: rgba(237, 85, 101, 0.781); /* Red glow spread color */
+  background-color: rgba(237, 85, 101, 0.781);
 }
 
+.review-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  z-index: 100;
+}
 
+.review {
+  flex: 0 1 calc(50% - 20px); /* Two reviews per row */
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+.person {
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.review_des {
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating p {
+  color: white;
+  font-size: 1em;
+  margin-left: 5px;
+}
+
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label:before {
+  content: "★";
+}
+
+.rating > input:checked ~ label {
+  color: #e58e09;
+}
