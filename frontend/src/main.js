@@ -126,11 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     validateButton.addEventListener('click', () => {
-        
-        showUserProfile(localStorage.getItem('user'));
-        mainContainer.style.display = 'none'; // Hide main content
-        validateContainer.style.display = 'flex'; // Show validate content
-        // You may want to adjust the display type (flex, block, etc.) based on your design needs
+      document.querySelector('.boxes').style.display = 'none';
+      document.querySelector('.main-content').style.display = 'none';
+      document.querySelector('.description').style.display = 'none';
+      showUserProfile(localStorage.getItem('user'));
+      // Show the validate container
+      document.querySelector('.validate-container').style.display = 'block';
     });
     
        // Event listener for the validate button

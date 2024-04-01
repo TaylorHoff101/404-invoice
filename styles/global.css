@@ -60,12 +60,15 @@ header {
   font-weight: 500;
   margin-left: 40px;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .container > header {
@@ -526,67 +529,59 @@ button.button.render::after {
   }
 }
 
+
+
 .validate-container {
-  display: flex;
+  display: flex; /* using flex to center its children */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #111111;
-  color: #ffffff;
-  padding-top: 5px;
-  box-sizing: border-box; /* Added to ensure padding is included in width */
+  width: 100%; /* Full width of its container */
+  max-width: 600px; /* Maximum width of the container, you can adjust as necessary */
+  /* No fixed height needed, it should just be the height of its content */
+  position: absolute; /* Absolute position to lay on top of other content */
+  top: 50%; /* Start at 50% from the top */
+  left: 50%; /* Start at 50% from the left */
+  transform: translate(-50%, -50%); /* Offset the element to truly center it */
+  z-index: 301; /* Higher z-index to ensure it's above other content */
+  padding: 20px; /* Padding inside the container */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow for depth */
+  background: #B563FF; /* Background color of the container */
+  color: #fff; /* Text color */
 }
 
-.validate-main h3 {
-  font-size: 1.5rem; /* Smaller font size for the title */
-  margin-top: 150px;
+.validate-container > .logo {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 150px;
+  padding-bottom: 550px;
+  z-index: 100;
+  position: absolute;
+  right: 250px;
+  top: 250px;
+  justify-content: space-between;
+  display: inline;
 }
 
-.validation-options {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Set to full width */
-  max-width: 500px; /* Maximum width for larger screens */
-  padding-top: 100px;
+/* Style for the title inside the validate-container */
+.validate-container .validate-main h3 {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.validation-options select,
-.validation-options .file-upload,
-.validation-options .validate-invoice {
-  width: 100%; /* Full width of parent */
-  max-width: 300px; /* Maximum width for larger screens */
-  padding: 10px;
-  margin: 10px 0; /* Vertical margin only */
+/* Style for the buttons inside the validate-container */
+.validate-container button {
+  padding: 10px 20px;
+  margin: 10px 0; /* Spacing between buttons and other elements */
+  border: none;
   border-radius: 5px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
 }
 
-.validation-method {
-  background: #2c2c2c;
-  color: #ffffff;
-}
-
-.file-upload {
-  background: #ffffff;
-  color: #000000;
-}
-
-.validate-invoice {
-  background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 0 0 .5em var(--glow-color);
-  margin-top: 1rem; /* Additional top margin */
-}
-
-.validate-invoice:hover {
-  background: #1e1e1e;
-  transition: background 0.4s ease;
+/* Style for the file input inside the validate-container */
+.validate-container .file-upload {
+  margin: 10px 0; /* Spacing between input and other elements */
 }
 
 .main-header.blur-background {

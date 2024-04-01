@@ -41,6 +41,25 @@
               <button class="button render">Render</button>
             </nav>
           </div>
+
+          <div class="validate-container" style="display: none;">
+            <header>
+              <h2 class="logo">Validate Your Invoice</h2>
+            </header>
+            <main class="validate-main">
+              <h3 class="title">Please choose the method and file for validation:</h3>
+              <div class="validation-options">
+                <select id="validation-method" class="validation-method">
+                  <option value="json">JSON</option>
+                  <option value="html">HTML</option>
+                  <option value="pdf">PDF</option>
+                </select>
+                <input type="file" id="file-upload" class="file-upload" />
+                <button class="button validate-invoice">Validate</button>
+              </div>
+            </main>
+          </div>
+          
           <div class="description">Effortlessly create, validate, and render e-invoices with our cost-effective solution, tailored for small businesses, start-ups, and entrepreneurs.</div>
         </main>
     </div>
@@ -68,24 +87,7 @@
   </div>
 
   
-  <div class="validate-container" style="display: none;">
-    <header>
-      <h2 class="logo">Validate Your Invoice</h2>
-      <!-- Include other header content if necessary -->
-    </header>
-    <main class="validate-main">
-      <h3 class="title">Please choose the method and file for validation:</h3>
-      <div class="validation-options">
-        <select id="validation-method" class="validation-method">
-          <option value="json">JSON</option>
-          <option value="html">HTML</option>
-          <option value="pdf">PDF</option>
-        </select>
-        <input type="file" id="file-upload" class="file-upload" />
-        <button class="button validate-invoice">Validate</button>
-      </div>
-    </main>
-  </div>
+
 
   <div id="results-container"></div>
 
