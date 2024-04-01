@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Rendering</title>
+    <link rel="stylesheet" href="rendering_style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
+</head>
+<body>
+    <div class="container">
+      <header>
+
+        <h2 class="logo">
+          <a href="#" class="logo_exit">404</a>
+        </h2>
+
+        <nav class="navigation">
+          <ul>
+            <button class="rendering_btn">Rendering</button>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1 class="title">Invoice Rendering</h1>
+      </main> 
+      
+      <nav class="invoice_ids">
+        <ul>
+            <li>
+                <a href="#" class="invoice_link" target="_self">invoice_id1</a>
+                <div class="render_buttons">
+                  <button class="view_btn">View</button>
+                  <button class="view_html_btn">View HTML Render</button>
+                  <button class="view_json_btn">View JSON Render</button>
+                  <button class="view_update_btn">Update</button>
+                  <button class="view_delete_btn">Delete</button>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="invoice_link" target="_self">invoice_id2</a>
+                <div class="render_buttons">
+                  <button class="view_btn">View</button>
+                  <button class="view_html_btn">View HTML Render</button>
+                  <button class="view_json_btn">View JSON Render</button>
+                  <button class="view_update_btn">Update</button>
+                  <button class="view_delete_btn">Delete</button>
+                </div>
+            </li>
+            <li>
+              <a href="#" class="invoice_link" target="_self">invoice_id3</a>
+              <div class="render_buttons">
+                <button class="view_btn">View</button>
+                <button class="view_html_btn">View HTML Render</button>
+                <button class="view_json_btn">View JSON Render</button>
+                <button class="view_update_btn">Update</button>
+                <button class="view_delete_btn">Delete</button>
+              </div>
+          </li>
+          <li>
+            <a href="#" class="invoice_link" target="_self">invoice_id4</a>
+            <div class="render_buttons">
+              <button class="view_btn">View</button>
+              <button class="view_html_btn">View HTML Render</button>
+              <button class="view_json_btn">View JSON Render</button>
+              <button class="view_update_btn">Update</button>
+              <button class="view_delete_btn">Delete</button>
+            </div>
+          </li>
+          <li>
+              <a href="#" class="invoice_link" target="_self">invoice_id5</a>
+              <div class="render_buttons">
+                <button class="view_btn">View</button>
+                <button class="view_html_btn">View HTML Render</button>
+                <button class="view_json_btn">View JSON Render</button>
+                <button class="view_update_btn">Update</button>
+                <button class="view_delete_btn">Delete</button>
+              </div>
+          </li>
+        </ul>
+    </nav>
+    </div>
+    
+// JavaScript to handle the button popup      
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const invoiceLinks = document.querySelectorAll('.invoice_link');
+    
+    invoiceLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            // Get the corresponding render buttons for the clicked link
+            const renderButtons = link.nextElementSibling;
+
+            // Toggle the visibility of render buttons
+            renderButtons.classList.toggle('show');
+
+            // Prevent default link behavior
+            event.preventDefault();
+        });
+    });
+});
+</script>          
+</body>
+</html>
