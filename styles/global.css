@@ -253,6 +253,7 @@ button.button.render::after {
   border-radius: 100px;
   background: #3c3c3c;
   color: #fff;
+
 }
 
 .login input:focus {
@@ -282,10 +283,19 @@ button.button.render::after {
   font-size: 1.3em;
 }
 
+#loginEmail {
+  margin-top: 1px;
+}
+
+#loginPassword {
+  margin-bottom: 50px;
+}
 .btn {
   background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  color: #fff;
-  padding: 16px !important;
+  color: #000000;
+  padding: 5px !important;
+  bottom: 28px;
+
 }
 
 .btn:hover {
@@ -565,8 +575,9 @@ button.button.render::after {
 
 /* Style for the title inside the validate-container */
 .validate-container .validate-main h3 {
-  margin-bottom: 20px;
+  margin-top: 10px;
   text-align: center;
+  top: 100px;
 }
 
 /* Style for the buttons inside the validate-container */

@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     validateButton.addEventListener('click', () => {
       document.querySelector('.boxes').style.display = 'none';
-      document.querySelector('.main-content').style.display = 'none';
+      document.querySelector('.main-content').textContent = 'Validation';
       document.querySelector('.description').style.display = 'none';
       showUserProfile(localStorage.getItem('user'));
       document.querySelector('.validate-container').style.display = 'block';
