@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('registerForm');
     const mainContent = document.querySelector('.main-content');
     const validateButton = document.querySelector('.button.validate');
-    const mainContainer = document.querySelector('.container');
-    const validateContainer = document.querySelector('.validate-container');
+
 
     function toggleModal(modal, show) {
         const mainHeader = document.querySelector('.main-header');
@@ -22,48 +21,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to show user profile and hide login button
-        // When the user logs in, call this function
     function showUserProfile(email) {
         console.log("showUserProfile called with email:", email); 
         const loginButton = document.querySelector('.login_btn');
         const userProfileButton = document.getElementById('btn-message');
         const usernameElement = userProfileButton.querySelector('.username');
-        
-        // Hide the login button
         loginButton.style.display = 'none';
-        
-        // Show the user profile button
-        userProfileButton.style.display = 'block'; // change from 'flex' to 'block' if necessary
-        
-        // Set the email in the user profile
-        usernameElement.textContent = email; // Make sure this element is visible by default
+        userProfileButton.style.display = 'block'; 
+        usernameElement.textContent = email;
         usernameElement.style.opacity = 1;
         usernameElement.style.transform = 'translateY(0)';
     }
         
-
-
-
-    // Show the login modal when the login button is clicked
     loginBtn.addEventListener('click', () => {
         toggleModal(loginModal, true);
-        mainContent.style.pointerEvents = 'none'; // Disable pointer events when modal is shown
+        mainContent.style.pointerEvents = 'none'; 
     });
 
-    // Show the register modal when the register button is clicked
     showRegisterBtn.addEventListener('click', () => {
         toggleModal(loginModal, false);
         toggleModal(registerModal, true);
     });
 
-    // Show the login modal when the "Already have an account?" button is clicked
     showLoginBtn.addEventListener('click', () => {
         toggleModal(registerModal, false);
         toggleModal(loginModal, true);
     });
 
-    // Handle login form submission
     loginForm.addEventListener('submit', event => {
         event.preventDefault();
         const email = document.getElementById('loginEmail').value;
@@ -98,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle register form submission
     registerForm.addEventListener('submit', event => {
         event.preventDefault();
         const email = document.getElementById('registerEmail').value;
@@ -130,11 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.main-content').style.display = 'none';
       document.querySelector('.description').style.display = 'none';
       showUserProfile(localStorage.getItem('user'));
-      // Show the validate container
       document.querySelector('.validate-container').style.display = 'block';
     });
     
-       // Event listener for the validate button
   document.querySelector('.button.validate-invoice').addEventListener('click', function() {
     const fileInput = document.getElementById('file-upload');
   const file = fileInput.files[0];
@@ -144,13 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Read the file content as a text string
   const reader = new FileReader();
   reader.onload = function(e) {
     const xmlContent = e.target.result;
-    console.log('File content:', xmlContent); // Logs the content of the XML file
-
-    // Determine which endpoint to use based on the selected method
+    console.log('File content:', xmlContent); 
     const selectedMethod = document.getElementById('validation-method').value;
     let endpoint = '';
     switch (selectedMethod) {
@@ -167,8 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Invalid validation method selected.');
         return;
     }
-
-    // Retrieve the stored token
     const token = localStorage.getItem('token');
     if (!token) {
       alert('You are not logged in. Please log in to validate.');
@@ -187,20 +163,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        // Choose how to handle the response based on the selected method
+     
         if (selectedMethod === 'pdf') {
-          return response.blob(); // Handle binary data for PDF
+          return response.blob(); 
         } else {
-          return response.text(); // Handle text for JSON and HTML
+          return response.text(); 
         }
       })
       .then(data => {
+        //doesnt work yet -> tested on postman aswel
         if (selectedMethod === 'pdf') {
-          // Handle PDF: create an object URL and open it
+         
           const url = URL.createObjectURL(data);
           window.open(url, '_blank');
         } else {
-          // For JSON or HTML-as-text, display directly
+         
           console.log('Server response:', data);
           document.getElementById('results-container').textContent = data;
         }

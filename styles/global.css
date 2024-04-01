@@ -611,3 +611,17 @@ button.button.render::after {
   line-height: 1.5; /* Spacing between lines */
   white-space: pre-wrap; /* Wrap text to next line */
 }
+
+.file-label{
+  font-size: 1rem;
+}
+.file-label svg {
+  width: 1rem;
+  height: 1rem;
+ 
+}
+
+.button.file-label{
+  background-color: #8500a0;
+  border-radius: 0.5rem;
+}
