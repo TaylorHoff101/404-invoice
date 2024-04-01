@@ -14,7 +14,7 @@ header {
   padding: 25px 40px;
   background-color: rgb(61, 56, 56);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
   z-index: 99;
 }
 .navigation a {
@@ -66,6 +66,7 @@ header {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  z-index: 98;
 }
 
 .container > header {

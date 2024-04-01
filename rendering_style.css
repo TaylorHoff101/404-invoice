@@ -1,0 +1,255 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 40px;
+    background-color: rgb(61, 56, 56);
+    display: flex;
+    justify-content: space-between;
+    z-index: 99;
+  }
+
+.navigation a {
+    padding: 25px;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(217, 176, 255);
+}
+
+.logo {
+    font-size: 3em;
+    color: rgb(217, 176, 255);
+    text-shadow: 0 0 .5em rgb(217, 176, 255);
+    user-select: none;
+    border: .25em solid var(--glow-color);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    text-align: center;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+                0 0 4em 1em var(--glow-spread-color),
+                inset 0 0 .75em .25em var(--glow-color);
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  
+  .logo:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+                0 0 2.5em 2em var(--glow-spread-color),
+                inset 0 0 .5em .25em var(--glow-color);
+  }
+
+.navigation {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.login_btn {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+    top: 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    z-index: 98;
+  }
+  
+  .container > header {
+    width: 100%;
+    height: 100%;
+    background-color: #111111;
+    background-image: linear-gradient(
+      32deg,
+      rgba(8, 8, 8, 0.74) 30px,
+      transparent
+    );
+    background-size: 60px 60px;
+    background-position: -5px -5px;
+    z-index: 98;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 70px;
+    z-index: 100;
+    position: absolute;
+    color: rgb(217, 176, 255);
+    text-shadow: 0 0 .5em rgb(217, 176, 255); 
+    transition: all 0.3s;
+    top: 30px;
+    right: 730px; 
+  }
+
+
+.rendering_btn {
+    --glow-color: rgb(31, 40, 91);
+    --glow-spread-color: rgba(59, 74, 97, 0.781);
+    --btn-color: rgb(97, 94, 125);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+    top: 25px;
+}
+
+button {
+    --glow-color: rgb(140, 132, 148);
+    --glow-spread-color: rgba(107, 107, 117, 0.781);
+    --enhanced-glow-color: rgb(240, 240, 240);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 200%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+button:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+}
+
+button:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+}
+
+.invoice_ids {
+    margin-right: auto;
+    margin-left: 185px;
+    border: rgba(168, 168, 156, 0.781);
+    font-size: 23px;
+    z-index: 100;
+    position: absolute;
+    align-items: center;
+    right: 825px;
+}
+
+.invoice_ids > ul {
+    list-style: none;
+}
+
+.invoice_ids > ul > li {
+    background-color: rgba(91, 79, 79, 0.781);
+    position: relative;
+}
+
+.invoice_ids > ul > li > a {
+    display: block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.781);
+    font-weight: 500;
+    border-radius: 5px;
+    font: 700 normal 18px;
+    font-weight: 700;
+}
+
+.render_buttons {
+    display: none;
+    position: absolute;
+    background-color: blue;
+    top: 0%;
+    left: 100%;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0 0 0.5em rgba(9, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.invoice_ids > ul > li:hover .render_buttons {
+    display: block;
+}
+
+.render_buttons button {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.render_buttons button:hover {
+    background-color: #f1f1f1;
+}
