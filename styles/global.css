@@ -7,7 +7,7 @@
 }
 
 header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,11 +23,6 @@ header {
   text-decoration: none;
   color: white;
 }
-/* .logo {
-  font-size: 3em;
-  color: white;
-  user-select: none;
-} */
 
 .logo {
   font-size: 3em;
@@ -87,7 +82,7 @@ header {
   z-index: 98;
 }
 
-.title {
+.main-content {
   text-align: center;
   font-size: 70px; /* Adjust font size as needed */
   z-index: 100;
@@ -129,6 +124,7 @@ header {
   display: inline;
 }
 .login_btn {
+ 
   --glow-color: rgb(217, 176, 255);
   --glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
@@ -150,14 +146,14 @@ header {
   top: 20px;
 }
 button {
-  --glow-color: rgb(140, 132, 148);
+
   --glow-spread-color: rgba(107, 107, 117, 0.781);
   --enhanced-glow-color: rgb(240, 240, 240);
   border: .25em solid var(--glow-color);
   padding: 1em 3em;
   color: var(--glow-color);
   font-size: 15px;
-  font-weight: bold;
+
   background-color: var(--btn-color);
   border-radius: 1em;
   outline: none;
@@ -222,3 +218,401 @@ button.button.render::after {
 }
 
 
+.login.wrap {
+  width: 340px;
+  height: 400px;
+  background: #2c2c2c;
+  padding: 47px;
+  color: #fff;
+  border-radius: 17px;
+  font-size: 1.3em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 200; /* Ensure modals are on top */
+  position: fixed; /* Use fixed to position relative to the viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  display: none; /* Start hidden, show with JavaScript */
+  border: 2px solid #fff; /* White border */
+}
+
+
+.login input[type="text"],
+.login input[type="password"] {
+  opacity: 1;
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 13px 18px;
+  margin: 20px 0 0 0;
+  font-size: 0.8em;
+  border-radius: 100px;
+  background: #3c3c3c;
+  color: #fff;
+}
+
+.login input:focus {
+  animation: bounce 1s;
+  -webkit-appearance: none;
+}
+
+.login input[type=submit],
+.login input[type=button],
+.h1 {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 13px;
+  margin: 40px 0 0 0;
+  border-radius: 500px;
+  font-weight: 600;
+  animation: bounce2 1.6s;
+}
+
+.h1 {
+  padding: 0;
+  position: relative;
+  top: -35px;
+  display: block;
+  margin-bottom: -0px;
+  font-size: 1.3em;
+}
+
+.btn {
+  background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  color: #fff;
+  padding: 16px !important;
+}
+
+.btn:hover {
+  background: linear-gradient(144deg, #1e1e1e , 20%,#1e1e1e 50%,#1e1e1e );
+  color: rgb(255, 255, 255);
+  padding: 16px !important;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.login input[type=text] {
+  animation: bounce 1s;
+  -webkit-appearance: none;
+}
+
+.login input[type=password] {
+  animation: bounce1 1.3s;
+}
+
+.ui {
+  font-weight: bolder;
+  background: -webkit-linear-gradient(#B563FF, #535EFC, #0EC8EE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  border-radius: 4px; /* Rounded corners for the border */
+  padding: 4px 8px; /* Padding inside the border */
+  display: inline-block; /* Allows applying padding and border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  margin-top: 8px; /* Adds space between the login button and this link */
+  text-decoration: none; /* Removes underline from link */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.ui:hover {
+  background-color: #fff; /* Changes background to white on hover */
+  color: #000; /* Changes text color to black on hover */
+}
+
+@media only screen and (max-width: 600px) {
+  .login {
+    width: 70%;
+    padding: 3em;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-250px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce1 {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce2 {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.blur-background {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Add the following to your existing CSS */
+#btn-message {
+  display: none; /* Use flexbox for alignment */
+  align-items: center;
+  position: absolute; /* Absolute position to place it within the header */
+  top: 25px; /* Adjust these values to match the positioning of your login button */
+  right: 40px; /* This assumes the button is 40px from the right edge of the viewport */
+}
+
+
+.button-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 400 var(--font-size) Helvetica Neue, sans-serif;
+  box-shadow: 0 0 2.17382px rgba(0,0,0,.049),0 1.75px 6.01034px rgba(0,0,0,.07),0 3.63px 14.4706px rgba(0,0,0,.091),0 22px 48px rgba(0,0,0,.14);
+  background-color: #ffffff;
+  border-radius: 68px;
+  cursor: pointer;
+  padding: 6px 10px 6px 6px;
+  width: fit-content;
+  height: 40px;
+  border: 0;
+  overflow: hidden;
+  position: relative;
+  transition: var(--btn-transition);
+  z-index: 201;
+  
+}
+
+.button-message:hover {
+  height: auto;
+  padding: 8px 20px 8px 8px;
+  background-color: #ffffff;
+  transition: var(--btn-transition);
+}
+
+.button-message:active {
+  transform: scale(0.99);
+}
+
+.content-avatar {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  transition: var(--btn-transition);
+  position: relative;
+}
+
+.button-message:hover .content-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.status-user {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  right: 1px;
+  bottom: 1px;
+  border-radius: 50%;
+  outline: solid 2px var(--bg-color);
+  background-color: var(--online-status);
+  transition: var(--btn-transition);
+  animation: active-status 2s ease-in-out infinite;
+}
+
+.button-message:hover .status-user {
+  width: 10px;
+  height: 10px;
+  right: 1px;
+  bottom: 1px;
+  outline: solid 3px var(--bg-hover-color);
+}
+
+.notice-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 8px;
+  text-align: initial;
+  color: var(--text-color);
+}
+
+.username {
+  /* Adjust the letter-spacing, opacity, and transition properties as needed */
+  opacity: 1; /* Make username visible */
+  transform: translateY(0); /* Reset any transformations that may hide the username */
+  transition: opacity 0.2s, transform 0.2s; /* Smooth transition for hover effect */
+  /* Add other properties for font-size, color, etc., as desired */
+}
+.user-id {
+  font-size: 12px;
+  letter-spacing: -6px;
+  height: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--btn-transition);
+}
+
+.lable-message {
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transform: scaleY(1);
+  transition: var(--btn-transition);
+}
+
+
+.button-message:hover .user-id {
+  height: auto;
+  letter-spacing: normal;
+  opacity: 1;
+  transform: translateY(0);
+  transition: var(--btn-transition);
+}
+
+.button-message:hover .lable-message {
+  height: 0;
+  transform: scaleY(0);
+  transition: var(--btn-transition);
+}
+
+.lable-message, .username {
+  font-weight: 600;
+}
+
+.number-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 8px;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--bg-color-sup);
+  border-radius: 20px;
+}
+
+/*==============================================*/
+@keyframes active-status {
+  0% {
+    background-color: var(--online-status);
+  }
+
+  33.33% {
+    background-color: #93e200;
+  }
+
+  66.33% {
+    background-color: #93e200;
+  }
+
+  100% {
+    background-color: var(--online-status);
+  }
+}
+
+.validate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #111111;
+  color: #ffffff;
+  padding-top: 5px;
+  box-sizing: border-box; /* Added to ensure padding is included in width */
+}
+
+.validate-main h3 {
+  font-size: 1.5rem; /* Smaller font size for the title */
+  margin-top: 150px;
+}
+
+.validation-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Set to full width */
+  max-width: 500px; /* Maximum width for larger screens */
+  padding-top: 100px;
+}
+
+.validation-options select,
+.validation-options .file-upload,
+.validation-options .validate-invoice {
+  width: 100%; /* Full width of parent */
+  max-width: 300px; /* Maximum width for larger screens */
+  padding: 10px;
+  margin: 10px 0; /* Vertical margin only */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.validation-method {
+  background: #2c2c2c;
+  color: #ffffff;
+}
+
+.file-upload {
+  background: #ffffff;
+  color: #000000;
+}
+
+.validate-invoice {
+  background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 .5em var(--glow-color);
+  margin-top: 1rem; /* Additional top margin */
+}
+
+.validate-invoice:hover {
+  background: #1e1e1e;
+  transition: background 0.4s ease;
+}
+
+.main-header.blur-background {
+  filter: blur(8px);
+}
+
+#results-container {
+  background-color: #f8f9fa; /* Light grey background for contrast */
+  color: #212529; /* Dark text for readability */
+  padding: 20px; /* More padding for better spacing */
+  border-radius: 5px; /* Rounded corners for aesthetics */
+  margin-top: 20px; /* Space from the top */
+  margin-bottom: 20px; /* Space from the bottom */
+  width: 90%; /* Responsive width */
+  max-width: 960px; /* Maximum width */
+  overflow: auto; /* Scrollbar as needed */
+  position: relative; /* For precise positioning */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust based on the exact width for centering */
+  font-family: 'Courier New', Courier, monospace; /* Monospaced font for JSON */
+  white-space: pre-wrap; /* Maintain formatting but wrap as needed */
+}
+
+#results-container pre {
+  margin: 0; /* Remove default margin */
+  font-size: 16px; /* Larger font size for readability */
+  line-height: 1.5; /* Spacing between lines */
+  white-space: pre-wrap; /* Wrap text to next line */
+}
