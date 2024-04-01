@@ -1,151 +1,224 @@
-.loader {
-  --path: #2f3545;
-  --dot: #5628ee;
-  --duration: 3s;
-  width: 44px;
-  height: 44px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 40px;
+  background-color: rgb(61, 56, 56);
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+.navigation a {
+  padding: 25px;
+  font-size: 2em;
+  text-decoration: none;
+  color: white;
+}
+/* .logo {
+  font-size: 3em;
+  color: white;
+  user-select: none;
+} */
+
+.logo {
+  font-size: 3em;
+  color: rgb(217, 176, 255);
+  text-shadow: 0 0 .5em rgb(217, 176, 255);
+  user-select: none;
+  border: .25em solid var(--glow-color); /* Glowing border */
+  padding: 0.5em;
+  border-radius: 0.5em;
+  text-align: center;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+              0 0 4em 1em var(--glow-spread-color),
+              inset 0 0 .75em .25em var(--glow-color);
   position: relative;
+  display: inline-block;
+  transition: all 0.3s;
 }
 
-.loader:before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  position: absolute;
-  display: block;
-  background: var(--dot);
-  top: 37px;
-  left: 19px;
-  transform: translate(-18px, -18px);
-  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+.logo:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+              0 0 2.5em 2em var(--glow-spread-color),
+              inset 0 0 .5em .25em var(--glow-color);
 }
 
-.loader svg {
-  display: block;
+
+.ul {
+  text-decoration: underline;
+  display: inline;
+}
+.navigation {
+  position: relative;
+  font-size: 1.1em;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 40px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container > header {
   width: 100%;
   height: 100%;
+  background-color: #111111;
+  background-image: linear-gradient(
+    32deg,
+    rgba(8, 8, 8, 0.74) 30px,
+    transparent
+  );
+  background-size: 60px 60px;
+  background-position: -5px -5px;
+  z-index: 98;
 }
 
-.loader svg rect, .loader svg polygon, .loader svg circle {
-  fill: none;
-  stroke: var(--path);
-  stroke-width: 10px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
+.title {
+  text-align: center;
+  font-size: 70px; /* Adjust font size as needed */
+  z-index: 100;
+  position: absolute;
+  color: rgb(217, 176, 255); /* Set the text color */
+  text-shadow: 0 0 .5em rgb(217, 176, 255); /* Apply the glow effect */
+  transition: all 0.3s;
+  top: 30px;
+  right: 730px; 
 }
 
-.loader svg polygon {
-  stroke-dasharray: 145 76 145 76;
-  stroke-dashoffset: 0;
-  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+.description {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 1.5em;
+  z-index: 100;
+  position: absolute;
+  right: 65px;
+  bottom: 220px;
 }
 
-.loader svg rect {
-  stroke-dasharray: 192 64 192 64;
-  stroke-dashoffset: 0;
-  animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+.boxes > .align-boxes {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 150px;
+  padding-bottom: 550px;
+  z-index: 100;
+  position: absolute;
+  right: 250px;
+  top: 250px;
+  justify-content: space-between;
+  display: inline;
 }
 
-.loader svg circle {
-  stroke-dasharray: 150 50 150 50;
-  stroke-dashoffset: 75;
-  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+.boxes > .align-boxes > button {
+  font-size: 23px;
+  margin: 100px;
+  justify-content: space-between;
+  display: inline;
+}
+.login_btn {
+  --glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgb(231, 206, 255);
+  --btn-color: rgb(100, 61, 136);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 4em 1em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  top: 20px;
+}
+button {
+  --glow-color: rgb(140, 132, 148);
+  --glow-spread-color: rgba(107, 107, 117, 0.781);
+  --enhanced-glow-color: rgb(240, 240, 240);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 4em 1em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+ }
+
+ .button::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 200%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+ }
+ 
+ button:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 4em 2em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+ }
+ 
+ button:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+         0 0 2.5em 2em var(--glow-spread-color),
+         inset 0 0 .5em .25em var(--glow-color);
+ }
+
+ button.button.create {
+  --glow-color: rgb(75, 156, 211); /* Blue glow color */
 }
 
-.loader.triangle {
-  width: 48px;
+button.button.validate {
+  --glow-color: rgb(127, 186, 68); /* Green glow color */
 }
 
-.loader.triangle:before {
-  left: 21px;
-  transform: translate(-10px, -18px);
-  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+button.button.render {
+  --glow-color: rgb(237, 85, 101); /* Red glow color */
 }
 
-@keyframes pathTriangle {
-  33% {
-    stroke-dashoffset: 74;
-  }
-
-  66% {
-    stroke-dashoffset: 147;
-  }
-
-  100% {
-    stroke-dashoffset: 221;
-  }
+button.button.create::after {
+  background-color: rgba(75, 156, 211, 0.781); /* Blue glow spread color */
 }
 
-@keyframes dotTriangle {
-  33% {
-    transform: translate(0, 0);
-  }
-
-  66% {
-    transform: translate(10px, -18px);
-  }
-
-  100% {
-    transform: translate(-10px, -18px);
-  }
+button.button.validate::after {
+  background-color: rgba(127, 186, 68, 0.781); /* Green glow spread color */
 }
 
-@keyframes pathRect {
-  25% {
-    stroke-dashoffset: 64;
-  }
-
-  50% {
-    stroke-dashoffset: 128;
-  }
-
-  75% {
-    stroke-dashoffset: 192;
-  }
-
-  100% {
-    stroke-dashoffset: 256;
-  }
+button.button.render::after {
+  background-color: rgba(237, 85, 101, 0.781); /* Red glow spread color */
 }
 
-@keyframes dotRect {
-  25% {
-    transform: translate(0, 0);
-  }
 
-  50% {
-    transform: translate(18px, -18px);
-  }
-
-  75% {
-    transform: translate(0, -36px);
-  }
-
-  100% {
-    transform: translate(-18px, -18px);
-  }
-}
-
-@keyframes pathCircle {
-  25% {
-    stroke-dashoffset: 125;
-  }
-
-  50% {
-    stroke-dashoffset: 175;
-  }
-
-  75% {
-    stroke-dashoffset: 225;
-  }
-
-  100% {
-    stroke-dashoffset: 275;
-  }
-}
-
-.loader {
-  display: inline-block;
-  margin: 0 16px;
-}
