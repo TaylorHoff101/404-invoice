@@ -24,6 +24,15 @@ header {
   color: white;
 }
 
+body {
+  background-color: #111111;
+  background-image: linear-gradient(
+    32deg,
+    rgba(8, 8, 8, 0.74) 30px,
+    transparent
+  );
+}
+
 .logo {
   font-size: 3em;
   color: rgb(217, 176, 255);
@@ -69,6 +78,12 @@ header {
   height: 100vh;
   width: 100%;
   position: relative;
+  background-color: #111111;
+  background-image: linear-gradient(
+    32deg,
+    rgba(8, 8, 8, 0.74) 30px,
+    transparent
+  );
 }
 
 .container > header {
@@ -635,4 +650,57 @@ button.button.render::after {
 .button.file-label{
   background-color: #8500a0;
   border-radius: 0.5rem;
+}
+
+.review-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  z-index: 100;
+}
+ 
+.review {
+  flex: 0 1 calc(50% - 20px);
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 100;
+}
+ 
+.person {
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+ 
+.review_des {
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+ 
+.rating {
+  display: flex;
+  align-items: center;
+}
+ 
+.rating p {
+  color: white;
+  font-size: 1em;
+  margin-left: 5px;
+}
+ 
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+ 
+.rating:not(:checked) > label:before {
+  content: "★";
+}
+ 
+.rating > input:checked ~ label {
+  color: #e58e09;
 }

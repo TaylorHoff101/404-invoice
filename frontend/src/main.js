@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.boxes').style.display = 'none';
       document.querySelector('.main-content').textContent = 'Validation';
       document.querySelector('.description').style.display = 'none';
+      document.getElementById("review-container").style.display = "none";
       showUserProfile(localStorage.getItem('user'));
       document.querySelector('.validate-container').style.display = 'block';
     });
@@ -212,6 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById("review-container").style.display = "none";
           console.log('Server response:', data);
           document.getElementById('results-container').innerHTML = data;
+          document.getElementById('results-container').style.display = "block";
+
         }
       })
       .catch(error => {
