@@ -1,0 +1,305 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 40px;
+    background-color: rgb(61, 56, 56);
+    display: flex;
+    justify-content: space-between;
+    z-index: 99;
+  }
+  .navigation a {
+    padding: 25px;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+  }
+  
+
+  .logo > a {
+    font-size: 1.9em;
+    color: rgba(255, 255, 255, 0.781);
+    text-shadow: 0 0 .5em rgba(165, 157, 157, 0.781);
+    user-select: none;
+    border: .25em solid var(--glow-color);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    text-align: center;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+                0 0 4em 1em var(--glow-spread-color),
+                inset 0 0 .75em .25em var(--glow-color);
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .logo > a:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+  }
+
+  .logo > a:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+                0 0 2.5em 2em var(--glow-spread-color),
+                inset 0 0 .5em .25em var(--glow-color);
+  }
+
+  .ul {
+    text-decoration: underline;
+    display: inline;
+  }
+  .navigation {
+    position: relative;
+    font-size: 1.1em;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .container > header {
+    width: 100%;
+    height: 100%;
+    background-color: #111111;
+    background-image: linear-gradient(
+      32deg,
+      rgba(8, 8, 8, 0.74) 30px,
+      transparent
+    );
+    background-size: 60px 60px;
+    background-position: -5px -5px;
+    z-index: 98;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 70px;
+    z-index: 100;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.781);
+    text-shadow: 0 0 .5em rgba(255, 255, 255, 0.781); 
+    transition: all 0.3s;
+    top: 30px;
+    right: 660px; 
+  }
+  
+  .description {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.5em;
+    z-index: 100;
+    position: absolute;
+    right: 555px;
+    bottom: 340px;
+  }
+  ol {
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    z-index: 100;
+    position: absolute;
+    bottom: 100px;
+    list-style-type: decimal;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+
+  ol li {
+    margin-bottom: 10px;
+  }
+  .before-click{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.5em;
+    z-index: 100;
+    position: relative;
+    right: 65px;
+    bottom: 70px;
+  }
+
+  .arrow-down {
+    position: relative;
+    margin-top: 50px;
+    bottom: 70px;
+    left: 230px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #fff;
+    z-index: 100;
+  }
+  
+  .boxes > .align-boxes {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 150px;
+    padding-bottom: 550px;
+    z-index: 100;
+    position: absolute;
+    right: 525px;
+    top: 250px;
+    justify-content: space-between;
+    display: inline;
+  }
+  
+  .boxes > .align-boxes > button {
+    font-size: 23px;
+    margin: 100px;
+    justify-content: space-between;
+    display: inline;
+  }
+  .login_btn {
+    --glow-color: rgba(255, 255, 255, 0.781);
+    --glow-spread-color: rgba(255, 255, 255, 0.781);
+    --enhanced-glow-color: rgba(255, 255, 255, 0.781);
+    --btn-color: rgb(80, 80, 80);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+    top: 20px;
+  }
+  button {
+    --glow-color: rgb(140, 132, 148);
+    --glow-spread-color: rgba(107, 107, 117, 0.781);
+    --enhanced-glow-color: rgb(240, 240, 240);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+   }
+  
+   .button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 200%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+   }
+   
+   button:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+   }
+   
+   button:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   }
+  
+   button.button.create {
+    --glow-color: rgb(80, 80, 80);
+  }
+  
+  button.button.validate {
+    --glow-color: rgb(80, 80, 80);
+  }
+  
+  button.button.create::after {
+    background-color: rgba(255, 255, 255, 0.781);
+  }
+  
+  button.button.validate::after {
+    background-color: rgba(255, 255, 255, 0.781);
+  }
+
+   .input-group {
+    z-index: 100;
+    left: 140px;
+    top: 305px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .input {
+    z-index: 100;
+    min-height: 50px;
+    max-width: 150px;
+    padding: 0 1rem;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #4f4e53;
+    border-radius: 6px 0 0 6px;
+    background-color: transparent;
+    z-index: 100;
+    left: 150px;
+    top: 325px;
+  }
+  
+  .button--submit {
+    z-index: 100;
+    left: 140px;
+    top: 300px;
+    z-index: 100;
+    min-height: 50px;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background-color: #9897a1;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  .button--submit:hover {
+    background-color: #b6b6b6;
+  }
+  
+  .input:focus, .input:focus-visible {
+    border-color: #ffffff;
+    outline: none;
+  }
+  

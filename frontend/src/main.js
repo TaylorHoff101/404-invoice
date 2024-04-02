@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('registerForm');
     const mainContent = document.querySelector('.main-content');
     const validateButton = document.querySelector('.button.validate');
+    const createButton = document.querySelector('.button.create');
 
 
     function toggleModal(modal, show) {
@@ -115,7 +116,38 @@ document.addEventListener('DOMContentLoaded', () => {
       showUserProfile(localStorage.getItem('user'));
       document.querySelector('.validate-container').style.display = 'block';
     });
+
+    createButton.addEventListener("click", () => {
+      console.log("we here");
+      window.location.href = "create.html";
+    });
+
+    document.querySelector(".button.render").addEventListener("click", () => {
+      window.location.href = "rendering.html";
+  });
+
+  document.querySelector(".logo").addEventListener("click", () => {
+      window.location.href = "index.html";
+  });
+
+  
+  document.querySelectorAll('.invoice_link').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        // Get the corresponding render buttons for the clicked link
+        const renderButtons = link.nextElementSibling;
+
+        // Toggle the visibility of render buttons
+        renderButtons.classList.toggle('show');
+
+        // Prevent default link behavior
+        event.preventDefault();
+    });
+  });
     
+
+
+
+
   document.querySelector('.button.validate-invoice').addEventListener('click', function() {
     const fileInput = document.getElementById('file-upload');
   const file = fileInput.files[0];
@@ -177,9 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const url = URL.createObjectURL(data);
           window.open(url, '_blank');
         } else {
-         
+          document.getElementById("review-container").style.display = "none";
           console.log('Server response:', data);
-          document.getElementById('results-container').textContent = data;
+          document.getElementById('results-container').innerHTML = data;
         }
       })
       .catch(error => {
@@ -187,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
   };
+
+
   reader.onerror = function() {
     alert('Failed to read file!');
   };
@@ -201,3 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 });
+
+document.getElementById("uploadCSV").addEventListener("click", function() {
+  console.log("inside")
+  window.open("http://3.27.23.157/invoice/CSV", "_blank");
+})
+document.getElementById("uploadJSON").addEventListener("click", function() {
+  window.open("http://3.27.23.157/invoice/JSON", "_blank");
+})
