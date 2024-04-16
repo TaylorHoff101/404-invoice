@@ -112,14 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
     validateButton.addEventListener('click', () => {
       document.querySelector('.boxes').style.display = 'none';
       document.querySelector('.main-content').textContent = 'Validation';
-      document.querySelector('.description').style.display = 'none';
+      console.log(document.querySelector('.description')); // Log the element to ensure it's the right one
+      document.querySelector('.description').style.display = 'none'; // Hide it
       showUserProfile(localStorage.getItem('user'));
       document.querySelector('.validate-container').style.display = 'block';
     });
 
     createButton.addEventListener("click", () => {
       console.log("we here");
-      window.location.href = "create.html";
+      document.querySelector('.boxes').style.display = 'none';
+      document.querySelector('.main-content').textContent = 'Create';
+      document.querySelector('.description').style.display = 'none';
+      showUserProfile(localStorage.getItem('user'));
+      document.querySelector('.create-container').style.display = 'block';
     });
 
     document.querySelector(".button.render").addEventListener("click", () => {
@@ -127,7 +132,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelector(".logo").addEventListener("click", () => {
-      window.location.href = "index.html";
+       // Set the main content back to its original state
+    document.querySelector('.main-content').textContent = 'E-Invoicing';
+
+    // Hide the create and validate containers
+    document.querySelector('.create-container').style.display = 'none';
+    document.querySelector('.validate-container').style.display = 'none';
+
+    // Show the original boxes and description
+    document.querySelector('.boxes').style.display = 'flex'; // or 'block', depending on your original CSS
+    document.querySelector('.description').style.display = 'block';
+    
+    // Remove the blur effect if it's there
+    const mainHeader = document.querySelector('.main-header');
+    if (mainHeader.classList.contains('blur-background')) {
+        mainHeader.classList.remove('blur-background');
+    }
+
+    // Enable pointer events back on the main content if they were disabled
+    mainContent.style.pointerEvents = 'auto';
   });
 
   
@@ -227,12 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
   reader.readAsText(file); //
   });
 
-
-  
-  window.addEventListener('beforeunload', function(event) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  });
   
 });
 

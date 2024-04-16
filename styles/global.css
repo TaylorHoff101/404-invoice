@@ -636,3 +636,71 @@ button.button.render::after {
   background-color: #8500a0;
   border-radius: 0.5rem;
 }
+
+
+/* General styles for buttons and layout */
+.button {
+  --glow-color: rgb(206, 192, 192);
+  --glow-spread-color: rgba(216, 203, 203, 0.781);
+  --btn-color: rgb(0, 0, 0);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  transition: all 0.3s;
+  
+}
+
+.button:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+}
+
+/* Specific styles for the create invoice section */
+.create-container .button {
+  font-size: 23px;
+  margin: 10px;
+  
+}
+
+.create-container .input-field {
+  min-height: 50px;
+  max-width: 150px;
+  padding: 0 1rem;
+  color: #000000;
+  border: 1px solid #000000;
+  background-color:#999494;
+  border-radius: 6px;
+}
+
+.create-container .input-field:focus {
+  border-color: #ffffff;
+  outline: none;
+}
+
+.create-container .description {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.create-container {
+  display: flex; /* using flex to center its children */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Full width of its container */
+  max-width: 600px; /* Maximum width of the container, you can adjust as necessary */
+  /* No fixed height needed, it should just be the height of its content */
+  position: absolute; /* Absolute position to lay on top of other content */
+  top: 50%; /* Start at 50% from the top */
+  left: 50%; /* Start at 50% from the left */
+  transform: translate(-50%, -50%); /* Offset the element to truly center it */
+  z-index: 301; /* Higher z-index to ensure it's above other content */
+  padding: 20px; /* Padding inside the container */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow for depth */
+  background: #B563FF; /* Background color of the container */
+  color: #fff; /* Text color */
+}
