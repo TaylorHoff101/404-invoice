@@ -83,12 +83,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    registerForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const email = document.getElementById('registerEmail').value;
-        const password = document.getElementById('registerPassword').value;
+    function validateEmail(email, callback) {
+      const accessKey = '1bc34036a9746528b9af056ba9940cd8'; // Use your actual access key
+      const requestUrl = `http://apilayer.net/api/check?access_key=${accessKey}&email=${email}&smtp=1&format=1`;
+    
+      fetch(requestUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (data.format_valid) {
+            callback(true); // Email is valid
+          } else {
+            callback(false, data.did_you_mean); // Email is invalid, provide suggestion if available
+          }
+        }).catch(error => {
+          console.error('Error during email validation:', error);
+          callback(false); // Handle the error case
+        });
+    }
 
-        fetch('https://invoice-validation-deployment.onrender.com/auth/register', {
+    registerForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+    
+      // Call the validateEmail function before proceeding with the registration
+      validateEmail(email, (isValid, suggestion) => {
+        if (isValid) {
+          // Proceed with the registration if email is valid
+          registerUser(email, password)
+            .then(data => {
+              console.log("Registration successful:", data);
+              toggleModal(registerModal, false);
+              toggleModal(loginModal, true);
+              
+            })
+            .catch(error => {
+              console.error("Registration failed:", error);
+              //alert('Registration failed: ' + error.message);
+              
+            });
+        } else {
+          // Alert the user if the email is invalid
+          let errorMessage = `Invalid email address.`;
+          if (suggestion) {
+            errorMessage += ` Did you mean: ${suggestion}?`;
+          }
+          alert(errorMessage);
+        }
+      });
+    });
+    
+    function registerUser(email, password) {
+      return fetch('https://invoice-validation-deployment.onrender.com/auth/register', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -98,16 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 password: password
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Registration successful', data);
-            toggleModal(registerModal, false);
-            toggleModal(loginModal, true);
-        })
-        .catch(error => {
-            console.error('Error during registration:', error);
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to register');
+          }
+          return response.text();
         });
-    });
+    }
 
     validateButton.addEventListener('click', () => {
       document.querySelector('.boxes').style.display = 'none';
@@ -128,7 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector(".button.render").addEventListener("click", () => {
-      window.location.href = "rendering.html";
+      console.log("we here");
+      document.querySelector('.boxes').style.display = 'none';
+      document.querySelector('.main-content').textContent = 'Create';
+      document.querySelector('.description').style.display = 'none';
+      showUserProfile(localStorage.getItem('user'));
+      document.querySelector('.render-container').style.display = 'block';
   });
 
   document.querySelector(".logo").addEventListener("click", () => {
@@ -150,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Enable pointer events back on the main content if they were disabled
-    mainContent.style.pointerEvents = 'auto';
+    mainContent.style.pointerEvents = 'auto'; 
   });
 
   

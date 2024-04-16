@@ -223,7 +223,7 @@ button.button.render::after {
 
 .login.wrap {
   width: 340px;
-  height: 400px;
+  height: auto;
   background: #2c2c2c;
   padding: 47px;
   color: #fff;
@@ -289,6 +289,10 @@ button.button.render::after {
 
 #loginPassword {
   margin-bottom: 50px;
+}
+
+#registerSubmit.btn {
+  margin-top: 30px;
 }
 .btn {
   background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
@@ -703,4 +707,19 @@ button.button.render::after {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow for depth */
   background: #B563FF; /* Background color of the container */
   color: #fff; /* Text color */
+}
+
+.plan-selection {
+  margin: 10px 0;
+}
+
+.plan-selection label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.plan-detail {
+  font-size: 0.8em;
+  margin-left: 22px;
+  color: #666;
 }

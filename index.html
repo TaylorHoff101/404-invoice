@@ -93,6 +93,8 @@
             </main>
           </div>
 
+          <div class="render-container" style="display: none;">
+          </div>
 
 	
 
@@ -118,11 +120,23 @@
   <div class="login wrap" id="registerModal" style="display:none;">
     <div class="h1">Register</div>
     <form id="registerForm">
-      <input placeholder="Email" id="registerEmail" name="email" type="text">
-      <input placeholder="Password" id="registerPassword" name="password" type="password">
+      <input placeholder="Email" id="registerEmail" name="email" type="text" required>
+      <input placeholder="Password" id="registerPassword" name="password" type="password" required>
+      <div class="plan-selection">
+        <label>
+          <input type="radio" name="plan" value="free" checked> Free Plan
+          <p class="plan-detail">Create up to 3 invoices for free.</p>
+        </label>
+        <label>
+          <input type="radio" name="plan" value="premium"> Premium Plan
+          <p class="plan-detail">
+            $15/month,
+            Create unlimited invoices.</p>
+        </label>
+      </div>
       <button id="registerSubmit" class="btn" type="submit">Register</button>
     </form>
-    <p>Already have an account? <button id="showLogin" class="ui" type="button">Login</button></p>
+    <p>Already have an account? <button id="showLogin" class="ui" type="button">Login here</button></p>
   </div>
 
   
