@@ -12,11 +12,11 @@ header {
   left: 0;
   width: 100%;
   padding: 25px 40px;
-  background-color: rgb(61, 56, 56);
   display: flex;
   justify-content: space-between;
   z-index: 99;
 }
+
 .navigation a {
   padding: 25px;
   font-size: 2em;
@@ -24,21 +24,28 @@ header {
   color: white;
 }
 
+
+
 .logo {
-  font-size: 3em;
-  color: rgb(217, 176, 255);
-  text-shadow: 0 0 .5em rgb(217, 176, 255);
-  user-select: none;
-  border: .25em solid var(--glow-color); /* Glowing border */
-  padding: 0.5em;
-  border-radius: 0.5em;
-  text-align: center;
-  box-shadow: 0 0 1em .25em var(--glow-color),
-              0 0 4em 1em var(--glow-spread-color),
-              inset 0 0 .75em .25em var(--glow-color);
-  position: relative;
-  display: inline-block;
-  transition: all 0.3s;
+
+    text-align: center;
+    font-size: 40px;
+    z-index: 100;
+    position: absolute;
+    background-color: rgba(37, 37, 37, 0.9);
+    color: rgb(255, 255, 255);
+    border: .25em solid rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em .25em rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 .5em rgba(0, 0, 0, 0.7);
+    transition: all 0.3s;
+    user-select: none;
+    display: inline-block;
+    height: auto; /* Adjusted to auto so it expands based on content */
+    line-height: 1.5; /* Adjusted to ensure proper line height */
+    position: relative; 
+    height: 120px;
 }
 
 .logo:active {
@@ -62,6 +69,74 @@ header {
 }
 
 .container {
+  width: 100%;
+  height: 100%;
+  /* Add your background pattern here */
+  background: lightblue;
+  background: radial-gradient(
+      circle,
+      rgb(170, 162, 162),
+      #333 30%,
+      rgba(88, 84, 84, 0.226) 0%
+    ),
+    radial-gradient(
+      circle at 40px 40px,
+      rgb(233, 228, 228),
+      #333 30%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 600px 200px,
+      rgb(233, 228, 228),
+      #333 10%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 800px 100px,
+      rgb(233, 228, 228),
+      #333 10%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 700px 500px,
+      rgb(233, 228, 228),
+      #333 2%,
+      rgba(88, 84, 84, 0.123) 0%
+    ),
+    radial-gradient(
+      circle at 200px 400px,
+      rgb(233, 228, 228),
+      #333 1%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 300px 700px,
+      rgb(233, 228, 228),
+      #333 15%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 900px 500px,
+      rgb(233, 228, 228),
+      #333 20%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 650px 400px,
+      rgb(233, 228, 228),
+      #333 10%,
+      rgba(88, 84, 84, 0) 0%
+    ),
+    radial-gradient(
+      circle at 600px 600px,
+      rgb(233, 228, 228),
+      #333 1%,
+      rgba(88, 84, 84, 0.959) 0%
+    );
+}
+
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,31 +149,40 @@ header {
 .container > header {
   width: 100%;
   height: 100%;
-  background-color: #111111;
-  background-image: linear-gradient(
-    32deg,
-    rgba(8, 8, 8, 0.74) 30px,
-    transparent
-  );
   background-size: 60px 60px;
   background-position: -5px -5px;
   z-index: 98;
 }
 
+
 .main-content {
   text-align: center;
-  font-size: 70px; /* Adjust font size as needed */
+  font-size: 80px;
   z-index: 100;
   position: absolute;
-  color: rgb(217, 176, 255); /* Set the text color */
-  text-shadow: 0 0 .5em rgb(217, 176, 255); /* Apply the glow effect */
-  transition: all 0.3s;
+  background-color: rgba(37, 37, 37, 0.9);
+  color: rgb(255, 255, 255);
+  border: .25em solid rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em .25em rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 .5em rgba(0, 0, 0, 0.7);
   top: 30px;
-  right: 730px; 
+  right: 730px;
+  transition: all 0.3s;
 }
+
+.align-boxes {  
+  left: 140px;
+  right: 20px;
+  margin-top: 100px;
+}
+
 
 .description {
   color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 700;
   text-align: center;
   font-size: 1.5em;
   z-index: 100;
@@ -126,30 +210,22 @@ header {
   justify-content: space-between;
   display: inline;
 }
-.login_btn {
- 
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(100, 61, 136);
-  border: .25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em .25em var(--glow-color),
-         0 0 4em 1em var(--glow-spread-color),
-         inset 0 0 .75em .25em var(--glow-color);
-  text-shadow: 0 0 .5em var(--glow-color);
-  position: relative;
-  transition: all 0.3s;
-  top: 20px;
-}
-button {
 
+.login_btn {
+  font-size: 80px;
+  z-index: 100;
+  background-color: rgba(37, 37, 37, 0.9);
+  color: rgb(255, 255, 255);
+  border: .25em solid rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em .25em rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 .5em rgba(0, 0, 0, 0.7);
+  font-size: 30px;
+  transition: all 0.3s;
+}
+
+button {
   --glow-spread-color: rgba(107, 107, 117, 0.781);
   --enhanced-glow-color: rgb(240, 240, 240);
   border: .25em solid var(--glow-color);
@@ -167,6 +243,13 @@ button {
   position: relative;
   transition: all 0.3s;
  }
+
+
+
+.render-page {
+  text-decoration: none;
+  /* color: black;  */
+}
 
  .button::after {
   pointer-events: none;
@@ -197,27 +280,27 @@ button {
  }
 
  button.button.create {
-  --glow-color: rgb(75, 156, 211); /* Blue glow color */
+  --glow-color: rgb(231, 234, 235); /* Blue glow color */
 }
 
 button.button.validate {
-  --glow-color: rgb(127, 186, 68); /* Green glow color */
+  --glow-color: rgb(232, 232, 232); /* Green glow color */
 }
 
 button.button.render {
-  --glow-color: rgb(237, 85, 101); /* Red glow color */
+  --glow-color: rgb(240, 237, 237); /* Red glow color */
 }
 
 button.button.create::after {
-  background-color: rgba(75, 156, 211, 0.781); /* Blue glow spread color */
+  background-color: rgba(234, 238, 240, 0.781); /* Blue glow spread color */
 }
 
 button.button.validate::after {
-  background-color: rgba(127, 186, 68, 0.781); /* Green glow spread color */
+  background-color: rgba(247, 252, 242, 0.781); /* Green glow spread color */
 }
 
 button.button.render::after {
-  background-color: rgba(237, 85, 101, 0.781); /* Red glow spread color */
+  background-color: rgba(235, 231, 231, 0.781); /* Red glow spread color */
 }
 
 
@@ -272,6 +355,8 @@ button.button.render::after {
   border-radius: 500px;
   font-weight: 600;
   animation: bounce2 1.6s;
+  
+  
 }
 
 .h1 {
@@ -281,6 +366,7 @@ button.button.render::after {
   display: block;
   margin-bottom: -0px;
   font-size: 1.3em;
+  
 }
 
 #loginEmail {
@@ -299,7 +385,6 @@ button.button.render::after {
   color: #000000;
   padding: 5px !important;
   bottom: 28px;
-
 }
 
 .btn:hover {
@@ -546,28 +631,27 @@ button.button.render::after {
 
 
 .validate-container {
-  display: flex; /* using flex to center its children */
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Full width of its container */
-  max-width: 600px; /* Maximum width of the container, you can adjust as necessary */
-  /* No fixed height needed, it should just be the height of its content */
-  position: absolute; /* Absolute position to lay on top of other content */
-  top: 50%; /* Start at 50% from the top */
-  left: 50%; /* Start at 50% from the left */
-  transform: translate(-50%, -50%); /* Offset the element to truly center it */
-  z-index: 301; /* Higher z-index to ensure it's above other content */
-  padding: 20px; /* Padding inside the container */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow for depth */
-  background: #B563FF; /* Background color of the container */
-  color: #fff; /* Text color */
+  width: 100%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 301;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1a1a1a, #262626); /* Gradient background with urban feel */
+  color: #fff; /* White text */
 }
 
 .validate-container > .logo {
-  color: rgb(255, 255, 255);
+  color: #fff; /* White text */
   text-align: center;
-  font-size: 150px;
+  font-size: 70px;
   padding-bottom: 550px;
   z-index: 100;
   position: absolute;
@@ -577,27 +661,33 @@ button.button.render::after {
   display: inline;
 }
 
-/* Style for the title inside the validate-container */
+.validate-container header > h2 {
+  margin-top: 10px;
+  text-align: center;
+  left: 16px;
+  font-size: 35px;
+}
+
 .validate-container .validate-main h3 {
   margin-top: 10px;
   text-align: center;
   top: 100px;
 }
 
-/* Style for the buttons inside the validate-container */
 .validate-container button {
   padding: 10px 20px;
-  margin: 10px 0; /* Spacing between buttons and other elements */
+  margin: 10px 0;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
 }
 
-/* Style for the file input inside the validate-container */
 .validate-container .file-upload {
-  margin: 10px 0; /* Spacing between input and other elements */
+  margin: 10px 0;
 }
+
+
 
 .main-header.blur-background {
   filter: blur(8px);
@@ -637,25 +727,33 @@ button.button.render::after {
 }
 
 .button.file-label{
-  background-color: #8500a0;
+  color: pink;
   border-radius: 0.5rem;
+}
+
+.input-field {
+  color:rgb(30, 19, 99);
+  font-weight: bold; 
 }
 
 
 /* General styles for buttons and layout */
 .button {
-  --glow-color: rgb(206, 192, 192);
-  --glow-spread-color: rgba(216, 203, 203, 0.781);
-  --btn-color: rgb(0, 0, 0);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  transition: all 0.3s;
-  
+  --glow-spread-color: rgba(216, 203, 203, 0.781); /* Light pink spread color */
+  --glow-spread-color: rgba(140, 131, 131, 0.5); /* Light gray spread color */
+
+  --btn-color: rgb(0, 0, 0); /* Black button color */
+  padding: 1em 3em; /* Padding */
+  color: var(--glow-color); /* Text color */
+  font-weight: bold; /* Bold font */
+  background-color: var(--btn-color); /* Button background color */
+  border-radius: 1em; /* Rounded corners */
+  outline: none; /* Remove outline */
+  transition: all 0.3s; /* Transition effect */
 }
+
+
+
 
 .button:hover {
   color: var(--btn-color);
@@ -666,7 +764,7 @@ button.button.render::after {
 .create-container .button {
   font-size: 23px;
   margin: 10px;
-  
+  background-color: gray;
 }
 
 .create-container .input-field {
@@ -685,29 +783,34 @@ button.button.render::after {
 }
 
 .create-container .description {
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255); 
   text-align: center;
   font-size: 1.5em;
 }
 
 .create-container {
-  display: flex; /* using flex to center its children */
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Full width of its container */
-  max-width: 600px; /* Maximum width of the container, you can adjust as necessary */
-  /* No fixed height needed, it should just be the height of its content */
-  position: absolute; /* Absolute position to lay on top of other content */
-  top: 50%; /* Start at 50% from the top */
-  left: 50%; /* Start at 50% from the left */
-  transform: translate(-50%, -50%); /* Offset the element to truly center it */
-  z-index: 301; /* Higher z-index to ensure it's above other content */
-  padding: 20px; /* Padding inside the container */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow for depth */
-  background: #B563FF; /* Background color of the container */
-  color: #fff; /* Text color */
+  width: 100%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 301;
+  padding: 20px;
+  background: linear-gradient(135deg, #000000, #333333); /* Gradient background */
+  color: #fff; /* White text */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Strong shadow */
 }
+
+
+
+
+
 
 .plan-selection {
   margin: 10px 0;
@@ -722,4 +825,92 @@ button.button.render::after {
   font-size: 0.8em;
   margin-left: 22px;
   color: #666;
+}
+
+
+
+
+/* Rendering */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.render-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+.invoice_ids {
+  top: 500px;
+  margin-right: auto;
+  margin-left: 185px;
+  border: 1px solid rgba(46, 46, 40, 0.781);
+  font-size: 23px;
+  z-index: 100;
+  position: absolute;
+  align-items: center;
+  right: 825px;
+  box-shadow: 0 0 10px rgba(85, 60, 40, 0.5);
+  background-color: #333;
+}
+
+.invoice_ids > ul > li {
+  background-color: #666; 
+}
+
+.render_buttons button {
+  background-color: #999; 
+  color: #fff; 
+}
+
+.render_buttons button:hover {
+  background-color: #bbb; 
+}
+
+.invoice_ids > ul {
+  list-style: none;
+}
+
+.invoice_ids > ul > li {
+  background-color: rgba(97, 96, 96, 0.781);
+
+  position: relative;
+}
+
+.invoice_ids > ul > li > a {
+  display: block;
+  padding: 10px 20px;
+  margin: 5px;
+  text-decoration: none;
+  color: #fff; /* 흰색 텍스트 */
+  font-weight: 500;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.render_buttons {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  background-color: #222;
+  min-width: 120px;
+  box-shadow: 0 0 0.5em rgba(9, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.invoice_ids > ul > li:hover .render_buttons {
+  display: block;
 }

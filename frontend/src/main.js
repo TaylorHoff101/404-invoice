@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('.main-content');
     const validateButton = document.querySelector('.button.validate');
     const createButton = document.querySelector('.button.create');
-
+    const renderButton = document.querySelector('.button.render');
 
     function toggleModal(modal, show) {
         const mainHeader = document.querySelector('.main-header');
@@ -170,10 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.create-container').style.display = 'block';
     });
 
+    renderButton.addEventListener("click", () => {
+      console.log("we here");
+      document.querySelector('.boxes').style.display = 'none';
+      document.querySelector('.main-content').textContent = 'Render';
+      document.querySelector('.description').style.display = 'none';
+      showUserProfile(localStorage.getItem('user'));
+      document.querySelector('.render-container').style.display = 'block';
+    });
+
     document.querySelector(".button.render").addEventListener("click", () => {
       console.log("we here");
       document.querySelector('.boxes').style.display = 'none';
-      document.querySelector('.main-content').textContent = 'Create';
+      document.querySelector('.main-content').textContent = 'render';
       document.querySelector('.description').style.display = 'none';
       showUserProfile(localStorage.getItem('user'));
       document.querySelector('.render-container').style.display = 'block';
@@ -186,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide the create and validate containers
     document.querySelector('.create-container').style.display = 'none';
     document.querySelector('.validate-container').style.display = 'none';
+    document.querySelector('.render-container').style.display = 'none';
 
     // Show the original boxes and description
     document.querySelector('.boxes').style.display = 'flex'; // or 'block', depending on your original CSS
