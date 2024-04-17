@@ -50,39 +50,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loginForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-
-        fetch('https://invoice-validation-deployment.onrender.com/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: email,
-                password: password
-            })
-        })
-        .then(response => response.text())
-        .then(text => {
-            const tokenMatch = text.match(/"([^"]+)"/);
-            if (tokenMatch) {
-                const token = tokenMatch[1];
-                localStorage.setItem('token', token);
-                localStorage.setItem('user', email);
-                toggleModal(loginModal, false);
-                showUserProfile(email);
-                console.log('Login successful. Token:', token);
-            } else {
-                throw new Error('Token not found in response');
-            }
-        })
-        .catch(error => {
-            console.error('Error during login:', error);
-        });
+      event.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+  
+      // Define the endpoints
+      const endpointPrimary = 'https://invoice-validation-deployment.onrender.com/auth/login';
+      const endpointSecondary = 'https://plswork-cdndr7jrqq-ts.a.run.app/validate/login';
+  
+      // Define the request options
+      const options = {
+          method: 'POST',
+          headers: {
+              'Content-type': 'application/json',
+          },
+          body: JSON.stringify({
+              username: email,
+              password: password
+          })
+      };
+  
+      // First login request
+      fetch(endpointPrimary, options)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to log in at first endpoint');
+          }
+          return response.text();  // Assuming the response is text containing the token
+      })
+      .then(text => {
+          const tokenMatch = text.match(/"([^"]+)"/);
+          if (tokenMatch) {
+              const token = tokenMatch[1];
+              localStorage.setItem('token', token);
+              localStorage.setItem('user', email);
+              // Proceed with the second login request
+              return fetch(endpointSecondary, options);
+          } else {
+              throw new Error('Token not found in response from first endpoint');
+          }
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to log in at second endpoint');
+          }
+          return response.text();  // Handle the response from the second login
+      })
+      .then(() => {
+          // Both logins successful
+          toggleModal(loginModal, false);
+          showUserProfile(email);
+          console.log('Login successful at both endpoints.');
+      })
+      .catch(error => {
+          console.error('Error during login:', error);
+      });
     });
-
+    
     function validateEmail(email, callback) {
       const accessKey = '1bc34036a9746528b9af056ba9940cd8'; // Use your actual access key
       const requestUrl = `http://apilayer.net/api/check?access_key=${accessKey}&email=${email}&smtp=1&format=1`;
@@ -134,23 +158,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     function registerUser(email, password) {
-      return fetch('https://invoice-validation-deployment.onrender.com/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: email,
-                password: password
-            })
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to register');
-          }
-          return response.text();
-        });
+      const endpoint2 = 'https://invoice-validation-deployment.onrender.com/auth/register';
+      const endpoint1 = 'https://plswork-cdndr7jrqq-ts.a.run.app/validate/register';
+  
+      const payload = JSON.stringify({ 'username': email, 'password': password });
+      const options = {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: payload
+      };
+  
+      return fetch(endpoint1, options)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Failed to register at first endpoint');
+              }
+              return response.text();  // Proceed with the second request if the first succeeds
+          })
+          .then(() => fetch(endpoint2, options))  // Make the second request
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Failed to register at second endpoint');
+              }
+              return response;  // Final response to be handled if needed
+          });
     }
+  
 
     validateButton.addEventListener('click', () => {
       document.querySelector('.boxes').style.display = 'none';
@@ -189,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelector(".logo").addEventListener("click", () => {
-       // Set the main content back to its original state
+    console.log("clicked");
     document.querySelector('.main-content').textContent = 'E-Invoicing';
 
     // Hide the create and validate containers
@@ -225,8 +258,129 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
     
+  document.querySelector('.button-save-invoice-id').addEventListener('click', function() {
+    const invoiceId = document.getElementById('invoiceIdInput').value.trim();
+    const username = localStorage.getItem('user');
+    if (!invoiceId) {
+        alert('Please enter an Invoice ID.');
+        return;
+    }
+    if (!username) {
+        alert('You are not logged in.');
+        return;
+    }
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token') // Assuming you're using token-based authentication
+        },
+        body: JSON.stringify({
+            invoiceId: invoiceId,
+            username: username
+        })
+    };
+    fetch('https://plswork-cdndr7jrqq-ts.a.run.app/validate/save', requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to save invoice ID.');
+            }
+            return response.json();  // Assuming the server responds with JSON
+        })
+        .then(data => {
+            alert('Invoice ID saved successfully.');
+            console.log('Server response:', data);
+        })
+        .catch(error => {
+            console.error('Error during saving invoice ID:', error);
+            alert('Error: ' + error.message);
+        });
+  });
 
+  document.querySelector(".button.render").addEventListener("click", () => {
+    const renderContainer = document.querySelector('.render-container');
+    const invoiceIdsNav = renderContainer.querySelector('.invoice_ids');
+    const ul = invoiceIdsNav.querySelector('ul');
+    ul.innerHTML = ''; // Clear existing entries
 
+    const username = localStorage.getItem('user');
+
+    fetch(`https://plswork-cdndr7jrqq-ts.a.run.app/validate/list?username=${username}`, {
+        method: 'GET',
+        headers: { 'Content-type': 'application/json' },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch invoices.');
+        }
+        return response.json(); // Assuming the server responds with JSON
+    })
+    .then(data => {
+        console.log('Server response:', data.invoices);
+        data.invoices.forEach(invoice => {
+          const li = document.createElement('li');
+          li.textContent = `InvoiceId: ${invoice}`;
+          li.setAttribute('data-invoice-id', invoice);
+      
+          const div = document.createElement('div');
+          div.className = 'render_buttons';
+      
+          // Create View XML button
+          const viewBtn = document.createElement('button');
+          viewBtn.textContent = 'View XML';
+          viewBtn.className = 'view_btn';
+          viewBtn.onclick = () => viewXml(invoice);
+      
+          // Create View HTML button
+          const viewHtmlBtn = document.createElement('button');
+          viewHtmlBtn.textContent = 'View HTML Render';
+          viewHtmlBtn.className = 'view_html_btn';
+          viewHtmlBtn.onclick = () => viewHtml(invoice);
+      
+          // Create View JSON button
+          const viewJsonBtn = document.createElement('button');
+          viewJsonBtn.textContent = 'View JSON Render';
+          viewJsonBtn.className = 'view_json_btn';
+          viewJsonBtn.onclick = () => viewJson(invoice);
+          
+          const sendEmailBtn = document.createElement('button');
+          sendEmailBtn.textContent = 'Send to Email';
+          sendEmailBtn.className = 'send_email_btn';
+          sendEmailBtn.onclick = () => sendToEmail(invoice);
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.textContent = 'Delete';
+          deleteBtn.className = 'delete_btn';
+          deleteBtn.onclick = () => {
+              if (confirm(`Are you sure you want to delete invoice ${invoice}?`)) {
+                  deleteInvoice(invoice);
+              }
+          };
+
+      
+          // Append buttons to div
+          div.appendChild(viewBtn);
+          div.appendChild(viewHtmlBtn);
+          div.appendChild(viewJsonBtn);
+          div.appendChild(sendEmailBtn);
+          div.appendChild(deleteBtn);
+
+          // Append div to li
+          li.appendChild(div);
+      
+          // Append li to ul
+          ul.appendChild(li);
+        });
+
+        renderContainer.style.display = 'block'; // Show the container
+        document.querySelector('.main-content').textContent = 'Render';
+        document.querySelector('.description').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error during fetching invoice list:', error);
+        alert('Error: ' + error.message);
+    });
+  });
 
 
   document.querySelector('.button.validate-invoice').addEventListener('click', function() {
@@ -308,7 +462,128 @@ document.addEventListener('DOMContentLoaded', () => {
   reader.readAsText(file); //
   });
 
-  
+
+  function viewHtml(invoiceId) {
+    const url = `https://plswork-cdndr7jrqq-ts.a.run.app/render/${invoiceId}/html`;
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Accept': 'text/html' },
+    })
+    .then(response => response.ok ? response.text() : Promise.reject('Failed to load HTML content.'))
+    .then(htmlContent => {
+        const startFooterIndex = htmlContent.indexOf('<footer class="site-footer">');
+        const endFooterIndex = htmlContent.indexOf('</footer>', startFooterIndex);
+        const modifiedHtmlContent = htmlContent.substring(0, startFooterIndex) + htmlContent.substring(endFooterIndex + 9);
+        
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write(modifiedHtmlContent);
+        newWindow.document.close(); // Close document stream
+    })
+    .catch(error => {
+        console.error('Error fetching HTML view:', error);
+        alert('Error: ' + error);
+    });
+}
+
+function viewJson(invoiceId) {
+    const url = `https://plswork-cdndr7jrqq-ts.a.run.app/render/${invoiceId}/json`;
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+    })
+    .then(response => response.ok ? response.text() : Promise.reject('Failed to load JSON content.'))
+    .then(jsonContent => {
+
+      const startFooterIndex = jsonContent.indexOf('<footer class="site-footer">');
+      const endFooterIndex = jsonContent.indexOf('</footer>', startFooterIndex);
+      const modifiedHtmlContent = jsonContent.substring(0, startFooterIndex) + jsonContent.substring(endFooterIndex + 9);
+
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(modifiedHtmlContent);
+      newWindow.document.close(); // Close document stream
+    })
+    .catch(error => {
+        console.error('Error fetching JSON view:', error);
+        alert('Error: ' + error);
+    });
+}
+
+function viewXml(invoiceId) {
+    const url = `https://plswork-cdndr7jrqq-ts.a.run.app/view/${invoiceId}`;
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Accept': 'application/xml' },
+    })
+    .then(response => response.ok ? response.text() : Promise.reject('Failed to load XML content.'))
+    .then(xmlContent => {
+      const startFooterIndex = xmlContent.indexOf('<footer class="site-footer">');
+      const endFooterIndex = xmlContent.indexOf('</footer>', startFooterIndex);
+      const modifiedHtmlContent = xmlContent.substring(0, startFooterIndex) + xmlContent.substring(endFooterIndex + 9);
+
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write(`<pre>${modifiedHtmlContent}</pre>`);
+        newWindow.document.close();
+    })
+    .catch(error => {
+        console.error('Error fetching XML view:', error);
+        alert('Error: ' + error);
+    });
+}
+
+function sendToEmail(invoiceId) {
+  // Trigger modal here to get email from user
+  const email = prompt('Please enter the email address to send the invoice to:');
+
+  if (!email) {
+      alert('Email is required to send the invoice.');
+      return;
+  }
+
+  const url = `https://plswork-cdndr7jrqq-ts.a.run.app/send/${invoiceId}/xml`; // or json/html based on your requirement
+  fetch(url, {
+      method: 'POST',
+      headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+  })
+  .then(response => response.ok ? response.json() : Promise.reject('Failed to send invoice.'))
+  .then(responseData => {
+      alert(`Invoice sent to ${email}: ${responseData.message}`);
+  })
+  .catch(error => {
+      console.error('Error sending invoice:', error);
+      alert('Error: ' + error);
+  });
+}
+
+function deleteInvoice(invoiceId) {
+  const url = 
+  `https://plswork-cdndr7jrqq-ts.a.run.app/validate/delete?username=${localStorage.getItem('user')}&invoiceId=${invoiceId}`;
+  fetch(url, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Failed to delete invoice.');
+      }
+      return response.json();
+  })
+  .then(() => {
+      alert(`Invoice ${invoiceId} has been deleted.`);
+      const liToRemove = document.querySelector(`li[data-invoice-id="${invoiceId}"]`);
+      if (liToRemove) {
+          liToRemove.remove();
+      }
+  })
+  .catch(error => {
+      console.error('Error deleting invoice:', error);
+      alert('Error: ' + error);
+  });
+}
+
 });
 
 document.getElementById("uploadCSV").addEventListener("click", function() {
