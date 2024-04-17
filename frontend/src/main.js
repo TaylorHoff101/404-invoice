@@ -107,54 +107,27 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
     
-    function validateEmail(email, callback) {
-      const accessKey = '1bc34036a9746528b9af056ba9940cd8'; // Use your actual access key
-      const requestUrl = `http://apilayer.net/api/check?access_key=${accessKey}&email=${email}&smtp=1&format=1`;
-    
-      fetch(requestUrl)
-        .then(response => response.json())
-        .then(data => {
-          if (data.format_valid) {
-            callback(true); // Email is valid
-          } else {
-            callback(false, data.did_you_mean); 
-          }
-        }).catch(error => {
-          console.error('Error during email validation:', error);
-          callback(false); // Handle the error case
-        });
-    }
+
 
     registerForm.addEventListener('submit', event => {
       event.preventDefault();
       const email = document.getElementById('registerEmail').value;
       const password = document.getElementById('registerPassword').value;
     
-      // Call the validateEmail function before proceeding with the registration
-      validateEmail(email, (isValid, suggestion) => {
-        if (isValid) {
-          // Proceed with the registration if email is valid
-          registerUser(email, password)
-            .then(data => {
-              console.log("Registration successful:", data);
-              toggleModal(registerModal, false);
-              toggleModal(loginModal, true);
-              
-            })
-            .catch(error => {
-              console.error("Registration failed:", error);
-              //alert('Registration failed: ' + error.message);
-              
-            });
-        } else {
-          // Alert the user if the email is invalid
-          let errorMessage = `Invalid email address.`;
-          if (suggestion) {
-            errorMessage += ` Did you mean: ${email}@email.com?`;
-          }
-          alert(errorMessage);
-        }
-      });
+        // Proceed with the registration if email is valid
+        registerUser(email, password)
+          .then(data => {
+            console.log("Registration successful:", data);
+            toggleModal(registerModal, false);
+            toggleModal(loginModal, true);
+            
+          })
+          .catch(error => {
+            console.error("Registration failed:", error);
+            //alert('Registration failed: ' + error.message);
+            
+          });
+  
     });
     
     function registerUser(email, password) {
