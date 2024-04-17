@@ -30,7 +30,7 @@ header {
 
     text-align: center;
     font-size: 40px;
-    z-index: 100;
+    z-index: 10;
     position: absolute;
     background-color: rgba(37, 37, 37, 0.9);
     color: rgb(255, 255, 255);
@@ -144,6 +144,7 @@ header {
   height: 100vh;
   width: 100%;
   position: relative;
+  z-index: 1; 
 }
 
 .container > header {
@@ -151,7 +152,7 @@ header {
   height: 100%;
   background-size: 60px 60px;
   background-position: -5px -5px;
-  z-index: 98;
+  z-index: 5;
 }
 
 
@@ -848,7 +849,7 @@ button.button.render::after {
   padding: 25px 40px;
   display: flex;
   justify-content: space-between;
-  z-index: 301;
+  z-index: 90;
   height: 100vh;
   overflow: hidden;
 }
@@ -859,17 +860,18 @@ button.button.render::after {
   margin-left: 185px;
   border: 1px solid rgba(0, 0, 0, 0.781);
   font-size: 23px;
-  z-index: 100;
   position: fixed;
   align-items: center;
   right: 825px;
   box-shadow: 0 0 10px rgba(85, 60, 40, 0.5);
   background-color: #333;
+  z-index: 95;
 }
 
 
 .invoice_ids > ul > li {
   background-color: #666; 
+  z-index: 400;
 }
 
 .render_buttons button {
@@ -883,11 +885,12 @@ button.button.render::after {
 
 .invoice_ids > ul {
   list-style: none;
+  z-index: 400;
 }
 
 .invoice_ids > ul > li {
   background-color: rgba(97, 96, 96, 0.781);
-
+  z-index: 400;
   position: relative;
 }
 
@@ -900,6 +903,7 @@ button.button.render::after {
   font-weight: 500;
   border-radius: 5px;
   font-size: 18px;
+  z-index: 400;
 }
 
 .render_buttons {

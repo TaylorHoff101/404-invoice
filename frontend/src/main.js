@@ -426,12 +426,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(response => response.ok ? response.text() : Promise.reject('Failed to load HTML content.'))
     .then(htmlContent => {
-        const startFooterIndex = htmlContent.indexOf('<footer class="site-footer">');
-        const endFooterIndex = htmlContent.indexOf('</footer>', startFooterIndex);
-        const modifiedHtmlContent = htmlContent.substring(0, startFooterIndex) + htmlContent.substring(endFooterIndex + 9);
-        
+       
         const newWindow = window.open('', '_blank');
-        newWindow.document.write(modifiedHtmlContent);
+        newWindow.document.write(viewRender(htmlContent));
         newWindow.document.close(); // Close document stream
     })
     .catch(error => {
@@ -448,13 +445,8 @@ function viewJson(invoiceId) {
     })
     .then(response => response.ok ? response.text() : Promise.reject('Failed to load JSON content.'))
     .then(jsonContent => {
-
-      const startFooterIndex = jsonContent.indexOf('<footer class="site-footer">');
-      const endFooterIndex = jsonContent.indexOf('</footer>', startFooterIndex);
-      const modifiedHtmlContent = jsonContent.substring(0, startFooterIndex) + jsonContent.substring(endFooterIndex + 9);
-
       const newWindow = window.open('', '_blank');
-      newWindow.document.write(modifiedHtmlContent);
+      newWindow.document.write(viewRender(jsonContent));
       newWindow.document.close(); // Close document stream
     })
     .catch(error => {
@@ -471,12 +463,9 @@ function viewXml(invoiceId) {
     })
     .then(response => response.ok ? response.text() : Promise.reject('Failed to load XML content.'))
     .then(xmlContent => {
-      const startFooterIndex = xmlContent.indexOf('<footer class="site-footer">');
-      const endFooterIndex = xmlContent.indexOf('</footer>', startFooterIndex);
-      const modifiedHtmlContent = xmlContent.substring(0, startFooterIndex) + xmlContent.substring(endFooterIndex + 9);
-
+      
         const newWindow = window.open('', '_blank');
-        newWindow.document.write(`<pre>${modifiedHtmlContent}</pre>`);
+        newWindow.document.write(`<pre>${viewRender(xmlContent)}</pre>`);
         newWindow.document.close();
     })
     .catch(error => {
@@ -537,6 +526,18 @@ function deleteInvoice(invoiceId) {
       console.error('Error deleting invoice:', error);
       alert('Error: ' + error);
   });
+}
+
+function viewRender(content) {
+  const buttonStartIndex = content.indexOf('<button type="submit"');
+    const buttonEndIndex = content.indexOf('</button>', buttonStartIndex);
+    const modifiedHtmlContentWithoutButton = content.substring(0, buttonStartIndex) + content.substring(buttonEndIndex + 9);
+    const startFooterIndex = modifiedHtmlContentWithoutButton.indexOf('<footer class="site-footer">');
+    const endFooterIndex = modifiedHtmlContentWithoutButton.indexOf('</footer>', startFooterIndex);
+    const modifiedHtmlContent = modifiedHtmlContentWithoutButton.substring(0, startFooterIndex) + 
+    modifiedHtmlContentWithoutButton.substring(endFooterIndex + 9);
+
+    return modifiedHtmlContent;
 }
 
 });
