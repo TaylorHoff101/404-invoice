@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (data.format_valid) {
             callback(true); // Email is valid
           } else {
-            callback(false, data.did_you_mean); // Email is invalid, provide suggestion if available
+            callback(false, data.did_you_mean); 
           }
         }).catch(error => {
           console.error('Error during email validation:', error);
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Alert the user if the email is invalid
           let errorMessage = `Invalid email address.`;
           if (suggestion) {
-            errorMessage += ` Did you mean: ${suggestion}?`;
+            errorMessage += ` Did you mean: ${email}@email.com?`;
           }
           alert(errorMessage);
         }
@@ -225,35 +225,26 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("clicked");
     document.querySelector('.main-content').textContent = 'E-Invoicing';
 
-    // Hide the create and validate containers
     document.querySelector('.create-container').style.display = 'none';
     document.querySelector('.validate-container').style.display = 'none';
     document.querySelector('.render-container').style.display = 'none';
 
-    // Show the original boxes and description
-    document.querySelector('.boxes').style.display = 'flex'; // or 'block', depending on your original CSS
+    document.querySelector('.boxes').style.display = 'flex';
     document.querySelector('.description').style.display = 'block';
     
-    // Remove the blur effect if it's there
     const mainHeader = document.querySelector('.main-header');
     if (mainHeader.classList.contains('blur-background')) {
         mainHeader.classList.remove('blur-background');
     }
 
-    // Enable pointer events back on the main content if they were disabled
     mainContent.style.pointerEvents = 'auto'; 
   });
 
   
   document.querySelectorAll('.invoice_link').forEach(function(link) {
     link.addEventListener('click', function(event) {
-        // Get the corresponding render buttons for the clicked link
         const renderButtons = link.nextElementSibling;
-
-        // Toggle the visibility of render buttons
         renderButtons.classList.toggle('show');
-
-        // Prevent default link behavior
         event.preventDefault();
     });
   });
@@ -273,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token') // Assuming you're using token-based authentication
+            'Authorization': localStorage.getItem('token') 
         },
         body: JSON.stringify({
             invoiceId: invoiceId,
@@ -285,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error('Failed to save invoice ID.');
             }
-            return response.json();  // Assuming the server responds with JSON
+            return response.json();  
         })
         .then(data => {
             alert('Invoice ID saved successfully.');
@@ -301,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderContainer = document.querySelector('.render-container');
     const invoiceIdsNav = renderContainer.querySelector('.invoice_ids');
     const ul = invoiceIdsNav.querySelector('ul');
-    ul.innerHTML = ''; // Clear existing entries
+    ul.innerHTML = ''; 
 
     const username = localStorage.getItem('user');
 
@@ -313,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
             throw new Error('Failed to fetch invoices.');
         }
-        return response.json(); // Assuming the server responds with JSON
+        return response.json(); 
     })
     .then(data => {
         console.log('Server response:', data.invoices);
@@ -324,20 +315,17 @@ document.addEventListener('DOMContentLoaded', () => {
       
           const div = document.createElement('div');
           div.className = 'render_buttons';
-      
-          // Create View XML button
+    
           const viewBtn = document.createElement('button');
           viewBtn.textContent = 'View XML';
           viewBtn.className = 'view_btn';
           viewBtn.onclick = () => viewXml(invoice);
-      
-          // Create View HTML button
+   
           const viewHtmlBtn = document.createElement('button');
           viewHtmlBtn.textContent = 'View HTML Render';
           viewHtmlBtn.className = 'view_html_btn';
           viewHtmlBtn.onclick = () => viewHtml(invoice);
       
-          // Create View JSON button
           const viewJsonBtn = document.createElement('button');
           viewJsonBtn.textContent = 'View JSON Render';
           viewJsonBtn.className = 'view_json_btn';
@@ -357,18 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
               }
           };
 
-      
-          // Append buttons to div
           div.appendChild(viewBtn);
           div.appendChild(viewHtmlBtn);
           div.appendChild(viewJsonBtn);
           div.appendChild(sendEmailBtn);
           div.appendChild(deleteBtn);
-
-          // Append div to li
           li.appendChild(div);
-      
-          // Append li to ul
           ul.appendChild(li);
         });
 
@@ -539,7 +521,7 @@ function sendToEmail(invoiceId) {
       return;
   }
 
-  const url = `https://plswork-cdndr7jrqq-ts.a.run.app/send/${invoiceId}/xml`; // or json/html based on your requirement
+  const url = `https://plswork-cdndr7jrqq-ts.a.run.app/send/${invoiceId}/xml`; 
   fetch(url, {
       method: 'POST',
       headers: { 
