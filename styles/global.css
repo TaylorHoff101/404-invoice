@@ -173,9 +173,9 @@ header {
 }
 
 .align-boxes {  
-  left: 140px;
+  left: 170px;
   right: 20px;
-  margin-top: 100px;
+  margin-top: 170px;
 }
 
 
@@ -796,7 +796,7 @@ button.button.render::after {
   width: 100%;
   max-width: 600px;
   position: absolute;
-  top: 50%;
+  top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 301;
