@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "Sprint 3",
+			"path": ".."
+		},
+		{
+			"name": "SSH FS - cse",
+			"uri": "ssh://cse/import/adams/3/z5364770"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "SSH FS - cse"
+	}
+}
